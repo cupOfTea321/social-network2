@@ -1,0 +1,32 @@
+.side_bar {
+    /*margin-top: 3%;*/
+    grid-area: bar;
+    background-color: white;
+    margin-right: 30px;
+    width: 300px;
+    height: 350px;
+    margin-bottom: 3%;
+    border: 1px solid white;
+    border-radius: 10px;
+    /*height: 200%;*/
+}
+.side_bar .new_feeds{
+
+}
+
+.side_bar .new_feeds .link{
+    color: black;
+    display: block;
+    text-decoration: none;
+    font-size: 2em;
+    margin-bottom: 2%;
+}
+
+.activeLink {
+    text-decoration-line: underline;
+    color: black;
+    display: block;
+    font-size: 2em;
+    margin-bottom: 2%;
+}
+

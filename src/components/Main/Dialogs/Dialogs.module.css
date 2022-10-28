@@ -1,0 +1,26 @@
+.main_dialogs{
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+}
+.main_dialogs div{
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+.messages_block{
+    background-color: cornflowerblue;
+
+}
+
+.active{
+    border: none;
+    background-color: white;
+}
+.dialogs_block{
+    background-color: coral;
+
+}
+.messList{
+
+}
