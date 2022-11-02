@@ -1,9 +1,14 @@
-main {
-
-    /*grid-area: main;*/
-
+.profile_main {
+    width: 1200px;
+    grid-area: main;
+    margin-bottom: 200px;
 }
-.main_photo{
+.photo_wrapper {
+    background-color: white;
+    border: 10px solid white;
+    border-radius: 10px;
+}
+.main_photo {
     /*width: 100%;*/
     height: 250px;
     background-size: 100% 100%;
@@ -14,54 +19,142 @@ main {
     border-radius: 10px;
 
 }
-
-
-
 /*PROFILE*/
-
-.profile_top{
+.profile_top {
     display: flex;
-    /*margin-top: -3%;*/
     margin-left: 2%;
+    background-color: white;
 }
-.profile_photo_div{
-    /*padding-top: 130px;*/
+.profile_photo_div {
     width: 100px;
-    /*flex: 1;*/
     background-image: url("../../../../img/ava1.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: 45% 45%;
 
 }
-
 .round {
 
-  border-radius: 100px;
-  border: 3px solid white;
+    border-radius: 100px;
+    border: 3px solid white;
 }
-.profile_text{
+
+.profile_text {
     flex: 4;
     margin-left: 3%;
-    /*padding-top: 3%;*/
 }
-.profile_name{
-    /*padding-top: 3%;*/
+
+.profile_name {
 }
-.profile_buttons{
+.profile_buttons {
     flex: 2;
     margin-top: 2%;
 }
-
-.add_button{
-    background-color:#10d876;
+.add_button {
+    background-color: #10d876;
     color: white;
     border: 1px solid white;
     padding: 10px 7px;
     font-size: 1.1em;
     border-radius: 5px;
 }
-.common_button_profile{
+.common_button_profile {
     margin-left: 2%;
     padding: 10px;
+}
+.nav_profile nav {
+    display: flex;
+    margin-top: 10px;
+    border-top: 1px solid #b5b6b8;
+}
+
+.nav_profile nav a {
+    /*flex: 1;*/
+    padding-right: 20px;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.nav_profile nav .a_main {
+    color: black;
+}
+
+
+/*PROFILE MANE*/
+.profile_bars {
+    display: flex;
+    margin-top: 20px;
+}
+
+.profile_about {
+    background-color: white;
+    flex: 1;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.profile_posts {
+    margin-left: 30px;
+    flex: 3;
+}
+
+.profile_posts div {
+    padding-left: 10px;
+}
+
+.profile_block1 {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+.profile_block1 textarea{
+    border: 1px solid #888;
+    width: 90%;
+}
+.profile_block1 button{
+    width: 120px;
+    padding: 7px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.profile_block2 {
+    margin-top: 15px;
+    padding-top: 10px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    display: flex;
+    height: 200px;
+
+}
+
+.profile_posts div {
+
+}
+
+.profile_posts textarea {
+
+
+}
+
+.posts_about {
+    height: 70px;
+}
+
+.post_photo {
+    background-size: 200%;
+    height: 150%;
+
+}
+
+.posts {
+
+}
+
+.posts .likes {
+
+}
+
+.text_post {
+
 }
