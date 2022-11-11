@@ -7,7 +7,9 @@ const Profile = (props) => {
     return (
         <main className={m.profile_main}>
             <ProfileWrapper/>
-            <ProfileBars updatePostText={props.updatePostText} post={props.post} allData={props.allData} />
+            <ProfileBars updatePostText={props.updatePostText}
+                         state={props.state}
+                         addPost={props.addPost}/>
         </main>
     );
 }

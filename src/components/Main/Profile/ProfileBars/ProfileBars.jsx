@@ -3,14 +3,15 @@ import ProfilePosts from "./ProfilePosts/ProfilePosts";
 import React from "react";
 
 const ProfileBars = (props) => {
+    console.log(props.addPost)
     // props.post("ну я четвёртый");
-    let likeElements = props.allData.profilePage.likeCount
+    let likeElements = props.state.profilePage.likeCount
         .map(like => <ProfilePosts  likeCount={like.count} id={like.id} mess={like.mess}/>)
 
     let post = React.createRef();
     let btnClick = () => {
 
-        props.post();
+        props.addPost();
         post.current.value = '';
     }
     let changeTextPost = () => {

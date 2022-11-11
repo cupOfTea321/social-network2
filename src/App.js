@@ -17,9 +17,14 @@ function App(props) {
 
         <div className="main">
           <Routes>
-            <Route path="/" element={<Profile post={props.post} updatePostText={props.updatePostText} allData={props.allData}/>}/>
-            <Route path="/profile" element={<Profile  post={props.post} updatePostText={props.updatePostText} allData={props.allData}/>}/>
-            <Route path="/dialogs" element={<Dialogs allData={props.allData} addMess={props.addMess}/>}/>
+            <Route path="/" element={<Profile updatePostText={props.store.updatePostText}
+                                              state={props.store.getState()}
+                                              addPost={props.store.addPost}/>}/>
+            <Route path="/profile" element={<Profile updatePostText={props.store.updatePostText}
+                                                     state={props.store.getState()}
+                                                     addPost={props.store.addPost}/>}/>
+            <Route path="/dialogs" element={<Dialogs state={props.store.getState()}
+                                                     addMess={props.store.addMess}/>}/>
 
           </Routes>
         </div>

@@ -6,9 +6,9 @@ import React from "react";
 
 const Dialogs = (props) => {
     // debugger;
-    let dialogsElement =props.allData.dialogsPage.dialogs
+    let dialogsElement =props.state.dialogsPage.dialogs
         .map(dialog => <DiaItem id={dialog.id}  name={dialog.name}/>)
-    let messElement = props.allData.dialogsPage.messages
+    let messElement = props.state.dialogsPage.messages
         .map(m => <MessItem id={m.id} message={m.message}/>)
 
     let type_mess = React.createRef();
