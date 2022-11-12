@@ -3,7 +3,7 @@ import d from './Dialogs.module.css'
 import DiaItem from "./DiaItem/DiaItem";
 import MessItem from "./MessItem/MessItem";
 import React from "react";
-import {addMessActionCreator} from "../../../Redux/State";
+import {addMessActionCreator} from "../../../Redux/dialogs_reducer";
 
 const Dialogs = (props) => {
     // debugger;

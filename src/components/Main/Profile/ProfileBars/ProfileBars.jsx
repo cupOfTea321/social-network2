@@ -1,7 +1,7 @@
 import m from "../Profile.module.css";
 import ProfilePosts from "./ProfilePosts/ProfilePosts";
 import React from "react";
-import {addPostActionCreator, changeTextPostActionCreator} from "../../../../Redux/State";
+import {addPostActionCreator, changeTextPostActionCreator} from "../../../../Redux/profile_reducer";
 
 
 const ProfileBars = (props) => {
