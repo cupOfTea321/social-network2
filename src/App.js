@@ -17,14 +17,12 @@ function App(props) {
 
         <div className="main">
           <Routes>
-            <Route path="/" element={<Profile updatePostText={props.store.updatePostText}
-                                              state={props.store.getState()}
-                                              addPost={props.store.addPost}/>}/>
-            <Route path="/profile" element={<Profile updatePostText={props.store.updatePostText}
-                                                     state={props.store.getState()}
-                                                     addPost={props.store.addPost}/>}/>
+            <Route path="/" element={<Profile dispatch={props.store.dispatch.bind(props.store)}
+                                              state={props.store.getState()}/> }/>
+            <Route path="/profile" element={<Profile dispatch={props.store.dispatch.bind(props.store)}
+                                                     state={props.store.getState()}/> }/>
             <Route path="/dialogs" element={<Dialogs state={props.store.getState()}
-                                                     addMess={props.store.addMess}/>}/>
+                                                     dispatch={props.store.dispatch.bind(props.store)}/>}/>
 
           </Routes>
         </div>

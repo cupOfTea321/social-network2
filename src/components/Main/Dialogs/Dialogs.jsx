@@ -3,6 +3,7 @@ import d from './Dialogs.module.css'
 import DiaItem from "./DiaItem/DiaItem";
 import MessItem from "./MessItem/MessItem";
 import React from "react";
+import {addMessActionCreator} from "../../../Redux/State";
 
 const Dialogs = (props) => {
     // debugger;
@@ -14,7 +15,8 @@ const Dialogs = (props) => {
     let type_mess = React.createRef();
     let send_mess = () => {
         let text = type_mess.current.value;
-        props.addMess(text);
+        let action = addMessActionCreator(text);
+        props.dispatch(action);
         type_mess.current.value = '';
     }
     return(
