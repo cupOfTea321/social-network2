@@ -1,9 +1,6 @@
 import {profileReducer} from "./profile_reducer";
 import {dialogsReducer} from "./dialogs_reducer";
 
-
-
-
 let store = {
     _state : {
         dialogsPage:{
@@ -24,7 +21,6 @@ let store = {
                 {id: '3', count: '44', mess: 'Никита, я всё знаю!'},
             ],
             postText: 'textPost'
-
         },
 
 
@@ -41,8 +37,6 @@ let store = {
         return this._state
     },
 
-
-
     dispatch(action){
 
         this._state.profilePage = profileReducer(this._state.profilePage, action);
@@ -53,8 +47,4 @@ let store = {
 }
 
 
-window.store = store;
-
-
-
-export default store;
+// export default store;

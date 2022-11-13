@@ -1,5 +1,5 @@
 import s from './SideBar.module.css'
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 const SideBar = () => {
     const setActive = ({isActive}) => isActive ? s.activeLink : s.link;
     return(

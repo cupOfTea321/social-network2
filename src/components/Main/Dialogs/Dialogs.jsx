@@ -3,20 +3,19 @@ import d from './Dialogs.module.css'
 import DiaItem from "./DiaItem/DiaItem";
 import MessItem from "./MessItem/MessItem";
 import React from "react";
-import {addMessActionCreator} from "../../../Redux/dialogs_reducer";
+
 
 const Dialogs = (props) => {
     // debugger;
-    let dialogsElement =props.state.dialogsPage.dialogs
+    let dialogsElement =props.dialogs
         .map(dialog => <DiaItem id={dialog.id}  name={dialog.name}/>)
-    let messElement = props.state.dialogsPage.messages
+    let messElement = props.messages
         .map(m => <MessItem id={m.id} message={m.message}/>)
 
     let type_mess = React.createRef();
     let send_mess = () => {
         let text = type_mess.current.value;
-        let action = addMessActionCreator(text);
-        props.dispatch(action);
+        props.sendMess(text);
         type_mess.current.value = '';
     }
     return(

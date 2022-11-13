@@ -1,27 +1,26 @@
 import m from "../Profile.module.css";
 import ProfilePosts from "./ProfilePosts/ProfilePosts";
 import React from "react";
-import {addPostActionCreator, changeTextPostActionCreator} from "../../../../Redux/profile_reducer";
+
 
 
 const ProfileBars = (props) => {
     // props.post("ну я четвёртый");
-    let likeElements = props.state.profilePage.likeCount
+    let likeElements = props.posts
         .map(like => <ProfilePosts  likeCount={like.count} id={like.id} mess={like.mess}/>)
 
     let post = React.createRef();
     let btnClick = () => {
         // props.dispatch.type = 'ADD-POST';
 
-        props.dispatch(addPostActionCreator());
+        props.addPost();
         post.current.value = '';
     }
     let changeTextPost = () => {
         // props.dispatch.type = 'UPDATE-TEXT';
         let text = post.current.value;
-        let action = changeTextPostActionCreator(text);
 
-        props.dispatch(action);
+        props.updatePostText(text);
     }
 
     return(
