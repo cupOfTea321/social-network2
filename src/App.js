@@ -18,12 +18,9 @@ function App(props) {
 
         <div className="main">
           <Routes>
-            <Route path="/" element={<Profile dispatch={props.store.dispatch.bind(props.store)}
-                                              state={props.store.getState()}/> }/>
-            <Route path="/profile" element={<Profile dispatch={props.store.dispatch.bind(props.store)}
-                                                     state={props.store.getState()}/> }/>
-            <Route path="/dialogs" element={<DialogsContainer state={props.store.getState()}
-                                                     dispatch={props.store.dispatch.bind(props.store)}/>}/>
+            <Route path="/" element={<Profile /> }/>
+            <Route path="/profile" element={<Profile /> }/>
+            <Route path="/dialogs" element={<DialogsContainer />}/>
 
           </Routes>
         </div>

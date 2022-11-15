@@ -8,8 +8,7 @@ const Profile = (props) => {
     return (
         <main className={m.profile_main}>
             <ProfileWrapper/>
-            <ProfileBarsContainer dispatch={props.dispatch}
-                         state={props.state}
+            <ProfileBarsContainer
                          />
         </main>
     );

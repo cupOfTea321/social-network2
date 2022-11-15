@@ -2,19 +2,28 @@
 import React from "react";
 import {addMessActionCreator} from "../../../Redux/dialogs_reducer";
 import Dialogs from "./Dialogs";
+import storeContext from "./../../../storeContext"
 
 const DialogsContainer = (props) => {
-    let send_mess = (text) => {
-        let action = addMessActionCreator(text);
-        props.dispatch(action);
 
-    }
     return(
-        <Dialogs
-            dialogs={props.state.dialogsPage.dialogs}
-            messages={props.state.dialogsPage.messages}
-            sendMess={send_mess}
-        />
+        <storeContext.Consumer>
+            {
+            (store) => {
+            let state = store.getState();
+            let send_mess = (text) => {
+                let action = addMessActionCreator(text);
+                store.dispatch(action);
+
+            }
+            return <Dialogs
+                dialogs={state.dialogsPage.dialogs}
+                messages={state.dialogsPage.messages}
+                sendMess={send_mess}
+            />}
+        }
+
+        </storeContext.Consumer>
     );
 }
 
