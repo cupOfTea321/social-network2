@@ -11,7 +11,7 @@ const SideBar = () => {
                 <NavLink className={s.link} to="#s">Explore Stories</NavLink>
                 <NavLink className={s.link} to="#s">Popular Groups</NavLink>
                 <NavLink to="/profile" className = { setActive }>Profile</NavLink>
-
+                <NavLink to="/friends" className = { setActive }>Friends</NavLink>
 
             </div>
         </div>

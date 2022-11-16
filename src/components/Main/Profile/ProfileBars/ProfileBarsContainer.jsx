@@ -1,35 +1,28 @@
 
-import React from "react";
+
 import {addPostActionCreator, changeTextPostActionCreator} from "../../../../Redux/profile_reducer";
 import ProfileBars from "./ProfileBars";
-import storeContext from "./../../../../storeContext"
 
-const ProfileBarsContainer = (props) => {
-    return(
-        <storeContext.Consumer>
-            {
-            (store) =>{
-                let state =store.getState();
-            let btnClick = () => {
-                // props.dispatch.type = 'ADD-POST';
+import {connect} from "react-redux";
 
-                store.dispatch(addPostActionCreator());
 
-            }
-            let changeTextPost = (text) => {
-                // props.dispatch.type = 'UPDATE-TEXT';
-                let action = changeTextPostActionCreator(text);
 
-                store.dispatch(action);
-            }
-            return  <ProfileBars
-                updatePostText={changeTextPost}
-                addPost={btnClick}
-                posts={state.profilePage.likeCount}
-            />}
-        }
-        </storeContext.Consumer>
+let mapStateToProps = (state) => {
+    return{
+        posts: state.profilePage.likeCount
 
-    );
+    }
 }
-export default ProfileBarsContainer;
+let mapDispatchToProps = (dispatch) => {
+    return{
+        updatePostText: (text) => {
+            let action = changeTextPostActionCreator(text);
+            dispatch(action);
+        },
+        addPost: () => {
+            dispatch(addPostActionCreator());
+        }
+    }
+}
+const ReduxProfileBarsContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileBars);
+export default ReduxProfileBarsContainer;

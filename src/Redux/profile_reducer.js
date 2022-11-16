@@ -15,30 +15,26 @@ let initialState = {
 }
 export const profileReducer = (state = initialState, action) => {
     switch (action.type){
-        case ADD_POST:
+        case ADD_POST: {
             let newPost = {
                 id: 5,
                 count: 0,
                 mess: state.postText
-            }
-            state.likeCount.push(newPost);
-            return state;
-        case UPDATE_TEXT:
-            state.postText = action.newText;
-            return state;
+            };
+            return  {
+                ...state,
+                likeCount: [...state.likeCount, newPost]
+            };
+
+        }
+        case UPDATE_TEXT: {
+            return  {
+                ...state,
+                postText: action.newText
+            };
+        }
         default:
             return state;
     }
-    // if (action.type === ADD_POST){
-    //     let newPost = {
-    //         id: 5,
-    //         count: 0,
-    //         mess: state.postText
-    //     }
-    //     state.likeCount.push(newPost);
-    // } else if (action.type === UPDATE_TEXT){
-    //     state.postText = action.newText;
-    //
-    // }
 
 }

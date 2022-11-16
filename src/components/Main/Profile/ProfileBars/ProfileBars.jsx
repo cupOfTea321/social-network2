@@ -7,7 +7,7 @@ import React from "react";
 const ProfileBars = (props) => {
     // props.post("ну я четвёртый");
     let likeElements = props.posts
-        .map(like => <ProfilePosts  likeCount={like.count} id={like.id} mess={like.mess}/>)
+        .map(like => <ProfilePosts  likeCount={like.count} key={like.id} id={like.id} mess={like.mess}/>)
 
     let post = React.createRef();
     let btnClick = () => {

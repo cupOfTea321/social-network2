@@ -7,12 +7,13 @@ import {BrowserRouter} from "react-router-dom";
 import App from "./App";
 import ReactDOM from "react-dom/client";
 import store from "./Redux/redux_store";
-import {Provider} from "./storeContext";
+import {Provider} from "react-redux";
+
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-export let rerenderTree = () => {
+
     root.render(
 
         <React.StrictMode>
@@ -26,9 +27,9 @@ export let rerenderTree = () => {
 
 
     );
-}
-rerenderTree();
-store.subscribe(rerenderTree)
+
+
+
 // rerenderTree(store);
 
 

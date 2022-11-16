@@ -9,4 +9,5 @@ let reducers = combineReducers({
 // автоматически создаёт объект стор, в который передаются редьюсеры
 let store = legacy_createStore(reducers);
 
+window.store = store;
 export default store;

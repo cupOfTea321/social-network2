@@ -8,9 +8,9 @@ import React from "react";
 const Dialogs = (props) => {
     // debugger;
     let dialogsElement =props.dialogs
-        .map(dialog => <DiaItem id={dialog.id}  name={dialog.name}/>)
+        .map(dialog => <DiaItem id={dialog.id} key={dialog.id} name={dialog.name}/>)
     let messElement = props.messages
-        .map(m => <MessItem id={m.id} message={m.message}/>)
+        .map(m => <MessItem id={m.id} key={m.id} message={m.message}/>)
 
     let type_mess = React.createRef();
     let send_mess = () => {
