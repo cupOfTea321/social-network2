@@ -6,6 +6,7 @@ import Profile from "./components/Main/Profile/Profile";
 
 import {Route, Routes} from "react-router-dom";
 import DialogsContainer from "./components/Main/Dialogs/DialogsContainer";
+import FriendsContainer from "./components/Friends/FriendsContainer";
 
 
 function App(props) {
@@ -21,7 +22,7 @@ function App(props) {
             <Route path="/" element={<Profile /> }/>
             <Route path="/profile" element={<Profile /> }/>
             <Route path="/dialogs" element={<DialogsContainer />}/>
-
+            <Route path="/friends" element={<FriendsContainer/>}/>
           </Routes>
         </div>
 

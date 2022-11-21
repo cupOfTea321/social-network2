@@ -1,0 +1,22 @@
+.main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.user_container{
+    background-color: white;
+    width: 150px;
+    padding: 5px;
+
+}
+.user_name{
+
+}
+.user_email{
+
+}
+.user_container img{
+    width: 100px;
+}
