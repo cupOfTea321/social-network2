@@ -3,6 +3,8 @@ import userPhoto from "../../assets/images/user.png";
 import React from "react";
 import {NavLink} from "react-router-dom";
 
+import {UsersAPI} from "../../api/api";
+
 let Friends = (props) => {
     let pagesCount = Math.ceil(props.totalFriendsCount / props.pageSize) ;
 
@@ -38,10 +40,21 @@ let Friends = (props) => {
                         <div>
                             {u.followed
                                 ? <button onClick={() => {
-                                    props.unfollow(u.id)
+                                    UsersAPI.unfollowUsers(u.id).then(response => {
+                                        if (response.resultCode === 0){
+                                            props.unfollow(u.id)
+                                        }
+                                    });
+
                                 }}>UNFOLLOW</button>
                                 : <button onClick={() => {
-                                    props.follow(u.id)
+
+                                        UsersAPI.followUsers(u.id).then(response => {
+                                        if (response.resultCode === 0){
+                                            props.follow(u.id)
+                                        }
+                                    });
+
                                 }}>FOLLOW</button>
                             }
                         </div>

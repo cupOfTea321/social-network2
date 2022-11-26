@@ -8,10 +8,11 @@ import {connect} from "react-redux";
 import {follow, setPage, setUsers, toggleIsFetching, unfollow} from "../../Redux/friends_reducer";
 
 import React from "react";
-import axios from "axios";
+
 import Friends from "./Friends";
 
 import Loader from "../common/Loader/Loader";
+import {UsersAPI} from "../../api/api";
 
 class FriendsAPIComponent extends React.Component {
     // constructor(props) {
@@ -21,18 +22,20 @@ class FriendsAPIComponent extends React.Component {
     //
     // }
     componentDidMount() {
+
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(response.data.items);
-        });
+        UsersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(response => {
+
+                this.props.toggleIsFetching(false);
+                this.props.setUsers(response.items);
+            });
     }
     setFriendsPage = (pageNumber) => {
         this.props.toggleIsFetching(true);
         this.props.setPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+        UsersAPI.getUsers(pageNumber, this.props.pageSize).then(response => {
             this.props.toggleIsFetching(false);
-            this.props.setUsers(response.data.items);
+            this.props.setUsers(response.items);
         });
     }
     render() {
@@ -63,25 +66,6 @@ let mapStateToProps = (state) => {
         isFetching: state.friendsPage.isFetching
     }
 }
-// let mapDispatchToProps = (dispatch) => {
-//     return{
-//         follow: (useId) => {
-//             dispatch(followAC(useId))
-//         },
-//         unfollow: (useId) => {
-//             dispatch(unfollowAC(useId))
-//         },
-//         setUser: (useId) => {
-//             dispatch(setUsersAC(useId))
-//         },
-//         setPage: (pageNumber) => {
-//             dispatch(setPageAC(pageNumber))
-//         },
-//         toggleIsFetching: (isFetching) => {
-//             dispatch(toggleIsFetchingAC(isFetching))
-//         }
-//     }
-// }
 const ReduxDialogsContainer = connect(mapStateToProps, {
     follow,
     unfollow,
