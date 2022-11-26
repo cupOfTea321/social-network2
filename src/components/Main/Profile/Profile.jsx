@@ -7,9 +7,8 @@ const Profile = (props) => {
 
     return (
         <main className={m.profile_main}>
-            <ProfileWrapper/>
-            <ProfileBarsContainer
-                         />
+            <ProfileWrapper profile={props.profile}/>
+            <ProfileBarsContainer/>
         </main>
     );
 }

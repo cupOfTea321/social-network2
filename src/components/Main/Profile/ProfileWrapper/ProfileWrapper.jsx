@@ -1,6 +1,12 @@
 import m from "../Profile.module.css";
+import Loader from "../../../common/Loader/Loader";
 
-const ProfileWrapper = () => {
+const ProfileWrapper = (props) => {
+
+    if (!props.profile){
+        return <Loader/>
+    }
+    // debugger
     return(
         <div className={m.photo_wrapper}>
             <div className={m.main_photo}>
@@ -8,7 +14,7 @@ const ProfileWrapper = () => {
             </div>
             <div className={m.profile_top}>
                 <div className={`${m.profile_photo_div} + ${m.round} `}>
-
+                <img src={props.profile.photos.small} alt=''/>
                 </div>
 
                 <div className={m.profile_text}>
