@@ -2,9 +2,6 @@ import f from "./Friends.module.css";
 import userPhoto from "../../assets/images/user.png";
 import React from "react";
 import {NavLink} from "react-router-dom";
-
-import {UsersAPI} from "../../api/api";
-
 let Friends = (props) => {
     let pagesCount = Math.ceil(props.totalFriendsCount / props.pageSize) ;
 
@@ -27,6 +24,7 @@ let Friends = (props) => {
                 })}
             </div>
             {
+
                 props.users.map(u =>
                     <div key={u.id} className={f.user_container}>
 
@@ -38,22 +36,32 @@ let Friends = (props) => {
                         <p className={f.user_name}>{u.name}</p>
                         <p className={f.user_email}>{u.id}</p>
                         <div>
+
                             {u.followed
-                                ? <button onClick={() => {
-                                    UsersAPI.unfollowUsers(u.id).then(response => {
-                                        if (response.resultCode === 0){
-                                            props.unfollow(u.id)
-                                        }
-                                    });
+
+                                ? <button disabled={props.followingInProgress} onClick={() => {
+
+                                    props.unfollow(u.id)
+                                    // props.toggleIsFetching(true);
+                                    // UsersAPI.unfollowUsers(u.id).then(response => {
+                                    //     if (response.resultCode === 0){
+                                    //         props.unfollow(u.id)
+                                    //
+                                    //     }
+                                    //     props.toggleIsFetching(false);
+                                    // });
 
                                 }}>UNFOLLOW</button>
-                                : <button onClick={() => {
-
-                                        UsersAPI.followUsers(u.id).then(response => {
-                                        if (response.resultCode === 0){
-                                            props.follow(u.id)
-                                        }
-                                    });
+                                : <button disabled={props.followingInProgress} onClick={() => {
+                                        props.follow(u.id)
+                                    //     props.toggleIsFetching(true);
+                                    //     UsersAPI.followUsers(u.id).then(response => {
+                                    //     if (response.resultCode === 0){
+                                    //         props.follow(u.id)
+                                    //     }
+                                    //         props.toggleIsFetching(false);
+                                    //
+                                    // });
 
                                 }}>FOLLOW</button>
                             }

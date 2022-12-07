@@ -5,14 +5,19 @@
 import {connect} from "react-redux";
 
 
-import {follow, setPage, setUsers, toggleIsFetching, unfollow} from "../../Redux/friends_reducer";
+import {
+    follow,
+    getUsersThunkCreator,
+    setPage,
+    toggleFollowing,
+    unfollow
+} from "../../Redux/friends_reducer";
 
 import React from "react";
 
 import Friends from "./Friends";
 
 import Loader from "../common/Loader/Loader";
-import {UsersAPI} from "../../api/api";
 
 class FriendsAPIComponent extends React.Component {
     // constructor(props) {
@@ -21,25 +26,27 @@ class FriendsAPIComponent extends React.Component {
     //
     //
     // }
+
     componentDidMount() {
-
-        this.props.toggleIsFetching(true);
-        UsersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(response => {
-
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(response.items);
-            });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
+        // this.props.toggleIsFetching(true);
+        // UsersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(response => {
+        //
+        //         this.props.toggleIsFetching(false);
+        //         this.props.setUsers(response.items);
+        //     });
     }
     setFriendsPage = (pageNumber) => {
-        this.props.toggleIsFetching(true);
+        this.props.getUsers(pageNumber, this.props.pageSize);
+        // this.props.toggleIsFetching(true);
         this.props.setPage(pageNumber);
-        UsersAPI.getUsers(pageNumber, this.props.pageSize).then(response => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(response.items);
-        });
+        // UsersAPI.getUsers(pageNumber, this.props.pageSize).then(response => {
+        //     this.props.toggleIsFetching(false);
+        //     this.props.setUsers(response.items);
+        // });
     }
     render() {
-
+        // debugger
         return(
             <>
                 {this.props.isFetching ? <Loader/> : null}
@@ -51,6 +58,8 @@ class FriendsAPIComponent extends React.Component {
                 users={this.props.users}
                 follow={this.props.follow}
                 unfollow={this.props.unfollow}
+                toggleIsFetching={this.props.toggleIsFetching}
+                // followingInProgress={this.props.followingInProgress}
             />
             </>
         )
@@ -63,15 +72,17 @@ let mapStateToProps = (state) => {
         pageSize: state.friendsPage.pageSize,
         totalFriendsCount: state.friendsPage.totalFriendsCount,
         currentPage: state.friendsPage.currentPage,
-        isFetching: state.friendsPage.isFetching
+        isFetching: state.friendsPage.isFetching,
+        followingInProgress: state.friendsPage.followingInProgress,
+
     }
 }
 const ReduxDialogsContainer = connect(mapStateToProps, {
     follow,
     unfollow,
-    setUsers,
     setPage,
-    toggleIsFetching,
+    toggleFollowing,
+    getUsers: getUsersThunkCreator,
 
 })(FriendsAPIComponent);
 export default ReduxDialogsContainer;
