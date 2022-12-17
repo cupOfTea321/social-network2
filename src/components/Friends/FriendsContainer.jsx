@@ -18,6 +18,7 @@ import React from "react";
 import Friends from "./Friends";
 
 import Loader from "../common/Loader/Loader";
+import {compose} from "redux";
 
 class FriendsAPIComponent extends React.Component {
     // constructor(props) {
@@ -77,12 +78,23 @@ let mapStateToProps = (state) => {
 
     }
 }
-const ReduxDialogsContainer = connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setPage,
-    toggleFollowing,
-    getUsers: getUsersThunkCreator,
+// const ReduxDialogsContainer = connect(mapStateToProps, {
+//     follow,
+//     unfollow,
+//     setPage,
+//     toggleFollowing,
+//     getUsers: getUsersThunkCreator,
+//
+// })(FriendsAPIComponent);
 
-})(FriendsAPIComponent);
-export default ReduxDialogsContainer;
+export default compose(
+
+    connect(mapStateToProps, {
+        follow,
+        unfollow,
+        setPage,
+        toggleFollowing,
+        getUsers: getUsersThunkCreator,
+
+    })
+)(FriendsAPIComponent) ;

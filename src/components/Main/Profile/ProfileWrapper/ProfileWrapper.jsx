@@ -1,5 +1,6 @@
 import m from "../Profile.module.css";
 import Loader from "../../../common/Loader/Loader";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileWrapper = (props) => {
 
@@ -19,7 +20,8 @@ const ProfileWrapper = (props) => {
 
                 <div className={m.profile_text}>
                     <h3 className={m.profile_name}>Alex Kobzev</h3>
-                    <p className="grey_text"> ddragon@gmail.com</p>
+                    <ProfileStatus status={"Just status..."}/>
+
                 </div>
                 <div className={m.profile_buttons}>
                     <button className={m.add_button}>ADD FRIEND</button>

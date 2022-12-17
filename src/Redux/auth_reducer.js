@@ -8,7 +8,7 @@ export const getUserData= (id, email, login) => (dispatch) => {
     return(
         AuthAPI.me().then(response => {
             let {id, email, login} = response.data.data;
-            this.props.setUserData(id, email, login);
+            dispatch(setUserData(id, email, login));
         })
     )
 }

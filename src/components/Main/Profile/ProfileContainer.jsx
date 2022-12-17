@@ -4,10 +4,15 @@ import React from "react";
 import {connect} from "react-redux";
 import {getUserProfile} from "../../../Redux/profile_reducer";
 import {
+
     useLocation,
     useNavigate,
     useParams,
 } from "react-router-dom";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
+import {compose} from "redux";
+
+
 
 
 class ProfileContainer extends React.Component{
@@ -33,8 +38,10 @@ class ProfileContainer extends React.Component{
     }
 
 }
+
+
 let  mapStateToProps = (state) => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
 
 })
 // wrapper to use react router's v6 hooks in class component(to use HOC pattern, like in router v5)
@@ -53,4 +60,12 @@ function withRouter(Component) {
 
     return ComponentWithRouterProp;
 }
-export default connect(mapStateToProps, {getUserProfile})(withRouter(ProfileContainer));
+
+
+export default compose(
+    connect(mapStateToProps, {getUserProfile}),
+    withRouter,
+    // Вызов HOC
+    withAuthRedirect,
+
+)(ProfileContainer);
