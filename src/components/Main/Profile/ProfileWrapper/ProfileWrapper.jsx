@@ -7,7 +7,7 @@ const ProfileWrapper = (props) => {
     if (!props.profile){
         return <Loader/>
     }
-    // debugger
+
     return(
         <div className={m.photo_wrapper}>
             <div className={m.main_photo}>
@@ -20,7 +20,8 @@ const ProfileWrapper = (props) => {
 
                 <div className={m.profile_text}>
                     <h3 className={m.profile_name}>Alex Kobzev</h3>
-                    <ProfileStatus status={"Just status..."}/>
+
+                    <ProfileStatus updateStatus={props.updateStatus} status={props.status}/>
 
                 </div>
                 <div className={m.profile_buttons}>
