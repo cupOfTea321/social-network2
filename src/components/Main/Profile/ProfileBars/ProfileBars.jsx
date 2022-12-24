@@ -33,6 +33,7 @@ const ProfileBars = (props) => {
 
                 <div className={m.profile_block1}>
                     <p className="grey_text">Create Post</p>
+
                     <textarea onChange={changeTextPost}  ref={post} id="text" placeholder="What`s on your mind?"  rows="5"/>
                     <button onClick={ btnClick}>Add</button>
                 </div>
