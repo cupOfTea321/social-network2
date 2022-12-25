@@ -1,6 +1,9 @@
 import m from "../Profile.module.css";
 import ProfilePosts from "./ProfilePosts/ProfilePosts";
 import React from "react";
+import {Field, reduxForm} from "redux-form";
+import { maxLengthCreator, requiredField} from "../../../../utils/validators/validators";
+import {Textarea} from "../../../common/ControlForms/ControlForms";
 
 
 
@@ -9,19 +12,15 @@ const ProfileBars = (props) => {
     let likeElements = props.posts
         .map(like => <ProfilePosts  likeCount={like.count} key={like.id} id={like.id} mess={like.mess}/>)
 
-    let post = React.createRef();
-    let btnClick = () => {
-        // props.dispatch.type = 'ADD-POST';
 
-        props.addPost();
-        post.current.value = '';
-    }
-    let changeTextPost = () => {
-        // props.dispatch.type = 'UPDATE-TEXT';
-        let text = post.current.value;
 
-        props.updatePostText(text);
-    }
+
+    let addPost = (values) => {
+            // props.dispatch.type = 'UPDATE-TEXT';
+
+        props.addPost(values.post);
+        values.post = '';
+        }
 
     return(
         <div className={m.profile_bars}>
@@ -34,8 +33,7 @@ const ProfileBars = (props) => {
                 <div className={m.profile_block1}>
                     <p className="grey_text">Create Post</p>
 
-                    <textarea onChange={changeTextPost}  ref={post} id="text" placeholder="What`s on your mind?"  rows="5"/>
-                    <button onClick={ btnClick}>Add</button>
+                    <ProfileReduxForm onSubmit={addPost}/>
                 </div>
                 {likeElements}
 
@@ -43,4 +41,17 @@ const ProfileBars = (props) => {
         </div>
     );
 }
+const ProfileForm = (props) => {
+    return(
+        <form onSubmit={props.handleSubmit}>
+            <Field validate={[requiredField, maxLengthCreator(10)]} component={Textarea} name={"post"} id="text" placeholder="What`s on your mind?" rows="5"/>
+            <button >Add</button>
+        </form>
+    )
+}
+// Функция, возвращающая НОС
+const ProfileReduxForm = reduxForm({
+    // a unique name for the form
+    form: 'post'
+})(ProfileForm)
 export default ProfileBars;
