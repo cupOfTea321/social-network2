@@ -3,12 +3,26 @@ import {AuthAPI} from "../api/api";
 const SET_USER_DATA = 'SET_USER_DATA';
 
 
-export const setUserData= (id, email, login) => ({type: SET_USER_DATA, data: {id, email, login}})
+export const setUserData= (id, email, login, isAuth) => ({type: SET_USER_DATA, data: {id, email, login, isAuth}})
 export const getUserData= (id, email, login) => (dispatch) => {
     return(
         AuthAPI.me().then(response => {
             let {id, email, login} = response.data.data;
-            dispatch(setUserData(id, email, login));
+            dispatch(setUserData(id, email, login, true));
+        })
+    )
+}
+export const login= (email, password, rememberMe) => (dispatch) => {
+    return(
+        AuthAPI.login(email, password, rememberMe).then(response => {
+            dispatch(getUserData())
+        })
+    )
+}
+export const logout = () => (dispatch) => {
+    return(
+        AuthAPI.logout().then(response => {
+            dispatch(setUserData(null, null, null, false));
         })
     )
 }
@@ -26,7 +40,7 @@ const AuthReducer = (state = initialState, action) => {
             return  {
                 ...state,
                 ...action.data,
-                isAuth: true
+                // isAuth: true
             }
 
 

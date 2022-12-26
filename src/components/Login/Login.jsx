@@ -1,11 +1,19 @@
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, requiredField} from "../../utils/validators/validators";
 import {Input} from "../common/ControlForms/ControlForms";
+import {connect} from "react-redux";
+import {login} from "../../Redux/auth_reducer";
+
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        console.log(formData)
+        props.login(formData.email, formData.password, formData.rememberMe)
     }
+    // if (props.isAuth){
+    //     return <Routes>
+    //         <Route path="/profile/*" element={<ProfileContainer /> }/>
+    //     </Routes>
+    // }
     return(
         <div>
             <h1>
@@ -19,13 +27,13 @@ const LoginForm = (props) => {
     return(
             <form onSubmit={props.handleSubmit}>
                 <div>
-                    <Field  placeholder={"Login"} name={"log"}  validate={[requiredField, maxLengthCreator(10)]} component={Input}/>
+                    <Field  placeholder={"Email"} name={"email"}  validate={[requiredField, maxLengthCreator(40)]} component={Input}/>
                 </div>
                 <div>
-                    <Field placeholder={"Password"} name={"pass"}  validate={[requiredField, maxLengthCreator(10)]} component={Input}/>
+                    <Field placeholder={"Password"} name={"password"} type={"password"} validate={[requiredField, maxLengthCreator(10)]} component={Input}/>
                 </div>
                 <div>
-                    <Field type={"checkbox"} name={"remember"} component={"input"}/> remember me
+                    <Field type={"checkbox"} name={"rememberMe"} component={"input"}/> remember me
                 </div>
                 <div>
                     <button>Log In</button>
@@ -39,4 +47,8 @@ const LoginReduxForm = reduxForm({
     // a unique name for the form
     form: 'login'
 })(LoginForm)
-export default Login;
+
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
+export default connect(mapStateToProps, {login})(Login);
