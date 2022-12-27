@@ -1,6 +1,6 @@
 import m from "../Profile.module.css";
 import Loader from "../../../common/Loader/Loader";
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileWrapper = (props) => {
 
@@ -21,7 +21,7 @@ const ProfileWrapper = (props) => {
                 <div className={m.profile_text}>
                     <h3 className={m.profile_name}>Alex Kobzev</h3>
 
-                    <ProfileStatus updateStatus={props.updateStatus} status={props.status}/>
+                    <ProfileStatusWithHooks updateStatus={props.updateStatus} status={props.status}/>
 
                 </div>
                 <div className={m.profile_buttons}>

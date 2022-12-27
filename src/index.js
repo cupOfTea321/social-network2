@@ -19,7 +19,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
         <React.StrictMode>
             <BrowserRouter >
                 <Provider store={store}>
-                    <App />
+                    <App  />
                 </Provider>
 
             </BrowserRouter>

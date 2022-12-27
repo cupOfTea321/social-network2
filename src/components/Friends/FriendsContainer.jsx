@@ -19,6 +19,13 @@ import Friends from "./Friends";
 
 import Loader from "../common/Loader/Loader";
 import {compose} from "redux";
+import {
+    getCurrentPage, getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalFriendsCount,
+    getUsers
+} from "../../Redux/friends_selectors";
 
 class FriendsAPIComponent extends React.Component {
     // constructor(props) {
@@ -69,23 +76,16 @@ class FriendsAPIComponent extends React.Component {
 let mapStateToProps = (state) => {
 
     return{
-        users: state.friendsPage.users,
-        pageSize: state.friendsPage.pageSize,
-        totalFriendsCount: state.friendsPage.totalFriendsCount,
-        currentPage: state.friendsPage.currentPage,
-        isFetching: state.friendsPage.isFetching,
-        followingInProgress: state.friendsPage.followingInProgress,
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalFriendsCount: getTotalFriendsCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state),
 
     }
 }
-// const ReduxDialogsContainer = connect(mapStateToProps, {
-//     follow,
-//     unfollow,
-//     setPage,
-//     toggleFollowing,
-//     getUsers: getUsersThunkCreator,
-//
-// })(FriendsAPIComponent);
+
 
 export default compose(
 
