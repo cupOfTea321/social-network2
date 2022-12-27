@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import {setStatus} from "../../../../Redux/profile_reducer";
 
 
 const ProfileStatusWithHooks = (props) =>  {
@@ -22,6 +23,11 @@ const ProfileStatusWithHooks = (props) =>  {
         getStatus(e.currentTarget.value)
 
     }
+
+    // Синхронизация состояния
+    useEffect(() => {
+        setStatus(props.status);
+    }, [props.status]);
 
         return(
             <div>
