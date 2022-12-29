@@ -9,6 +9,7 @@ import {Textarea} from "../../../common/ControlForms/ControlForms";
 
 const ProfileBars = (props) => {
     // props.post("ну я четвёртый");
+
     let likeElements = props.posts
         .map(like => <ProfilePosts  likeCount={like.count} key={like.id} id={like.id} mess={like.mess}/>)
 

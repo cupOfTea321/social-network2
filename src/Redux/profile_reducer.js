@@ -1,10 +1,12 @@
 import {ProfileAPI, UsersAPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
+const DELETE_POST = 'DELETE_POST';
 
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET-STATUS';
 export const addPostActionCreator = (text) => ({type: ADD_POST, text: text})
+export const deletePost = (text) => ({type: DELETE_POST, text: text})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile })
 export const getUserProfile = (userId) => (dispatch) => {
     return(
@@ -72,6 +74,12 @@ export const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status
 
+            }
+        }
+        case DELETE_POST: {
+            return {
+                ...state,
+                posts: state.likeCount.filter(p => p.id !== action.text)
             }
         }
         default:
