@@ -7,33 +7,21 @@ const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET-STATUS';
 export const addPostActionCreator = (text) => ({type: ADD_POST, text: text})
 export const deletePost = (text) => ({type: DELETE_POST, text: text})
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile })
-export const getUserProfile = (userId) => (dispatch) => {
-    return(
-        UsersAPI.getProfile(userId).then(response => {
-
-            dispatch(setUserProfile(response.data));
-        })
-    )
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export const getUserProfile = (userId) => async (dispatch) => {
+    let response = await UsersAPI.getProfile(userId);
+    dispatch(setUserProfile(response.data));
 }
-export const setStatus = (status) => ({type: SET_STATUS, status })
-export const getStatus = (userId) => (dispatch) => {
-    return(
-        ProfileAPI.getStatus(userId).then(response => {
-
-            dispatch(setStatus(response.data));
-        })
-    )
+export const setStatus = (status) => ({type: SET_STATUS, status})
+export const getStatus = (userId) => async (dispatch) => {
+    let response = await ProfileAPI.getStatus(userId);
+    dispatch(setStatus(response.data));
 }
-export const updateStatus = (status) => (dispatch) => {
-    return(
-        ProfileAPI.updateStatus(status).then(response => {
-            if (response.data.resultCode === 0){
-                dispatch(setStatus(status));
-            }
-
-        })
-    )
+export const updateStatus = (status) => async (dispatch) => {
+    let response = await ProfileAPI.updateStatus(status)
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status));
+    }
 }
 
 
@@ -47,7 +35,7 @@ let initialState = {
     status: "without",
 }
 export const profileReducer = (state = initialState, action) => {
-    switch (action.type){
+    switch (action.type) {
         case ADD_POST: {
             let newPost = {
                 id: 5,
@@ -55,7 +43,7 @@ export const profileReducer = (state = initialState, action) => {
                 mess: action.text,
 
             };
-            return  {
+            return {
                 ...state,
                 likeCount: [...state.likeCount, newPost],
                 text: action.text
@@ -64,7 +52,7 @@ export const profileReducer = (state = initialState, action) => {
         }
 
         case SET_USER_PROFILE: {
-            return  {
+            return {
                 ...state,
                 profile: action.profile
             };

@@ -56,40 +56,32 @@ export const friendsReducer = (state = initialState, action) => {
 
 }
 
-export const getUsersThunkCreator = (currentPage, pageSize) =>{
-
-    return (dispatch) => {
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
-        UsersAPI.getUsers(currentPage, pageSize).then(response => {
-
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(response.items));
-        });
+        let response = await UsersAPI.getUsers(currentPage, pageSize);
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsers(response.items));
     }
 }
-export const unfollowThunkCreator = (userId) =>{
+export const unfollowThunkCreator = (userId) => {
+    return async (dispatch) => {
 
-    return (dispatch) => {
         dispatch(toggleIsFetching(true));
-        UsersAPI.unfollowUsers(userId).then(response => {
-            if (response.resultCode === 0){
-                dispatch(unfollow(userId))
-
-            }
-            dispatch(toggleIsFetching(false));
-        });
+        let response = await UsersAPI.unfollowUsers(userId)
+        if (response.resultCode === 0) {
+            dispatch(unfollow(userId))
+        }
+        dispatch(toggleIsFetching(false));
     }
 }
-export const followThunkCreator = (userId) =>{
-
-    return (dispatch) => {
+export const followThunkCreator = (userId) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
-        UsersAPI.followUsers(userId).then(response => {
-            if (response.resultCode === 0){
-                dispatch(follow(userId))
-
-            }
-            dispatch(toggleIsFetching(false));
-        });
+        let response = await UsersAPI.followUsers(userId)
+        if (response.resultCode === 0) {
+            dispatch(follow(userId))
+        }
+        dispatch(toggleIsFetching(false));
     }
 }

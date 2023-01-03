@@ -5,22 +5,23 @@ const SET_USER_DATA = 'SET_USER_DATA';
 
 
 export const setUserData= (id, email, login, isAuth) => ({type: SET_USER_DATA, data: {id, email, login, isAuth}})
-export const getUserData= (id, email, login) => (dispatch) => {
-    return(
-        AuthAPI.me().then(response => {
+export const getUserData= (id, email, login) => async (dispatch) => {
+
+        let response = await AuthAPI.me();
+
             if (response.data.resultCode === 0){
                 let {id, email, login} = response.data.data;
                 dispatch(setUserData(id, email, login, true));
-            }
 
-        })
-    )
+
+        }
+
 }
-export const login= (email, password, rememberMe) => (dispatch) => {
+export const login= (email, password, rememberMe) => async (dispatch) => {
 
 
-    return(
-        AuthAPI.login(email, password, rememberMe).then(response => {
+    let response = await AuthAPI.login(email, password, rememberMe);
+
             if (response.data.resultCode === 0){
                 dispatch(getUserData())
             }
@@ -29,18 +30,15 @@ export const login= (email, password, rememberMe) => (dispatch) => {
                 dispatch(stopSubmit("login", {_error: message}));
             }
 
-        })
-    )
+
+
 }
-export const logout = () => (dispatch) => {
-    return(
-        AuthAPI.logout().then(response => {
+export const logout = () => async (dispatch) => {
+    let response = await AuthAPI.logout();
             if (response.data.resultCode === 0){
                 dispatch(setUserData(null, null, null, false));
             }
 
-        })
-    )
 }
 
 

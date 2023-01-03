@@ -1,74 +1,21 @@
 import f from "./Friends.module.css";
-import userPhoto from "../../assets/images/user.png";
 import React from "react";
-import {NavLink} from "react-router-dom";
-let Friends = (props) => {
-    let pagesCount = Math.ceil(props.totalFriendsCount / props.pageSize) ;
+import Paginator from "./Paginator";
+import Friend from "./Friend";
 
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++){
-        pages.push(i);
-    }
+let Friends = (props) => {
+
     return (
         <div className={f.main}>
-            <div>
-                {pages.map(p => {
-                    return <span
-                        key={p}
-                        className={props.currentPage === p && f.selectedPage}
-                                 onClick={(e) => {
-                                     props.setFriendsPage(p)
-                                 }}>
-                         {p}
-                     </span>
-                })}
-            </div>
+            <Paginator {...props}/>
             {
 
                 props.users.map(u =>
-                    <div key={u.id} className={f.user_container}>
-
-                        <NavLink to={'./../profile/' + u.id}>
-                            <img alt="img" src={u.photos.small != null ? u.photos.small : userPhoto}/>
-                        </NavLink>
-
-
-                        <p className={f.user_name}>{u.name}</p>
-                        <p className={f.user_email}>{u.id}</p>
-                        <div>
-
-                            {u.followed
-
-                                ? <button disabled={props.followingInProgress} onClick={() => {
-
-                                    props.unfollow(u.id)
-                                    // props.toggleIsFetching(true);
-                                    // UsersAPI.unfollowUsers(u.id).then(response => {
-                                    //     if (response.resultCode === 0){
-                                    //         props.unfollow(u.id)
-                                    //
-                                    //     }
-                                    //     props.toggleIsFetching(false);
-                                    // });
-
-                                }}>UNFOLLOW</button>
-                                : <button disabled={props.followingInProgress} onClick={() => {
-                                        props.follow(u.id)
-                                    //     props.toggleIsFetching(true);
-                                    //     UsersAPI.followUsers(u.id).then(response => {
-                                    //     if (response.resultCode === 0){
-                                    //         props.follow(u.id)
-                                    //     }
-                                    //         props.toggleIsFetching(false);
-                                    //
-                                    // });
-
-                                }}>FOLLOW</button>
-                            }
-                        </div>
-
-
-                    </div>
+                    <Friend key={u.id} user={u}
+                            followingInProgress={props.followingInProgress}
+                            follow={props.follow}
+                            unfollow={props.unfollow}
+                    />
                 )
             }
 
