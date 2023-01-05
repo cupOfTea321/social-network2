@@ -3,16 +3,14 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import SideBar from "./components/SideBar/SideBar";
 import {Route, Routes} from "react-router-dom";
 
-import React, { Suspense } from 'react';
+import React, {Component, Suspense} from 'react';
 
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import ProfileContainer, {withRouter} from "./components/Main/Profile/ProfileContainer";
 import LoginPage from "./components/Login/Login";
-import {Component} from "react";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./Redux/app_reducer";
-import Loader from "./components/common/Loader/Loader";
 
 // import DialogsContainer from "./components/Main/Dialogs/DialogsContainer";
 const DialogsContainer = React.lazy(() => import('./components/Main/Dialogs/DialogsContainer'));
@@ -26,9 +24,9 @@ class App extends Component {
     }
   render() {
       // debugger
-    if (!this.props.initialized){
-        return <Loader/>
-    }
+    // if (!this.props.initialized){
+    //     return <Loader/>
+    // }
 
     return (
 

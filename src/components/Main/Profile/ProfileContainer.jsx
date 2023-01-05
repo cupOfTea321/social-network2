@@ -1,8 +1,7 @@
-
 import Profile from "./Profile";
 import React from "react";
 import {connect} from "react-redux";
-import {getStatus, getUserProfile, updateStatus} from "../../../Redux/profile_reducer";
+import {getStatus, getUserProfile, savePhoto, updateStatus} from "../../../Redux/profile_reducer";
 import {
 
     useLocation,
@@ -13,39 +12,46 @@ import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 
+class ProfileContainer extends React.Component {
 
-
-class ProfileContainer extends React.Component{
-
-    componentDidMount() {
-
+    refreshProfile() {
         let profileId = this.props.router.params['*'];
-        if (!profileId){
+        if (!profileId) {
             profileId = this.props.userId;
 
         }
         this.props.getUserProfile(profileId);
         this.props.getStatus(profileId);
-
     }
+
+    componentDidMount() {
+        this.refreshProfile();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.refreshProfile();
+    }
+
+
     render() {
-
+debugger
         return (
-        <Profile {...this.props} profile={this.props.profile}
-                 status={this.props.status} updateStatus={this.props.updateStatus} />
-    )
-
+            <Profile {...this.props} profile={this.props.profile}
+                     status={this.props.status} updateStatus={this.props.updateStatus}
+            isOwner={!this.props.userId} savePhoto={this.props.savePhoto}/>
+        )
     }
 
 }
 
 
-let  mapStateToProps = (state) => ({
+let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     userId: state.auth.userId,
     isAuth: state.auth.isAuth,
 })
+
 // wrapper to use react router's v6 hooks in class component(to use HOC pattern, like in router v5)
 export function withRouter(Component) {
     function ComponentWithRouterProp(props) {
@@ -55,7 +61,7 @@ export function withRouter(Component) {
         return (
             <Component
                 {...props}
-                router={{ location, navigate, params }}
+                router={{location, navigate, params}}
             />
         );
     }
@@ -65,9 +71,8 @@ export function withRouter(Component) {
 
 
 export default compose(
-    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
+    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, savePhoto}),
     withRouter,
     // Вызов HOC
     withAuthRedirect,
-
 )(ProfileContainer);

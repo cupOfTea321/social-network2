@@ -2,11 +2,12 @@ import {ProfileAPI, UsersAPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
 const DELETE_POST = 'DELETE_POST';
-
+const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET-STATUS';
 export const addPostActionCreator = (text) => ({type: ADD_POST, text: text})
 export const deletePost = (text) => ({type: DELETE_POST, text: text})
+export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const getUserProfile = (userId) => async (dispatch) => {
     let response = await UsersAPI.getProfile(userId);
@@ -23,6 +24,12 @@ export const updateStatus = (status) => async (dispatch) => {
         dispatch(setStatus(status));
     }
 }
+export const savePhoto = (file) => async (dispatch) => {
+    let response = await ProfileAPI.savePhoto(file)
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotoSuccess(response.data.data.photos));
+    }
+}
 
 
 let initialState = {
@@ -31,7 +38,7 @@ let initialState = {
         {id: '2', count: '4', mess: 'Hello, today is a good day!'},
         {id: '3', count: '44', mess: 'Никита, я всё знаю!'},
     ],
-    profile: null,
+    profile: true,
     status: "without",
 }
 export const profileReducer = (state = initialState, action) => {
@@ -68,6 +75,12 @@ export const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts: state.likeCount.filter(p => p.id !== action.text)
+            }
+        }
+        case SAVE_PHOTO_SUCCESS: {
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos},
             }
         }
         default:

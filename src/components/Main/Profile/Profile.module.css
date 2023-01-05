@@ -27,7 +27,7 @@
 }
 .profile_photo_div {
     width: 100px;
-    background-image: url("../../../../img/ava1.jpg");
+    /*background-image: url("../../../../img/ava1.jpg");*/
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: 45% 45%;

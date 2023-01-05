@@ -30,7 +30,7 @@ const LoginForm = ({handleSubmit, error}) => {
                     <Field  placeholder={"Email"} name={"email"}  validate={[requiredField, maxLengthCreator(40)]} component={Input}/>
                 </div>
                 <div>
-                    <Field placeholder={"Password"} name={"password"} type={"password"} validate={[requiredField, maxLengthCreator(10)]} component={Input}/>
+                    <Field placeholder={"Password"} name={"password"} type={"password"} validate={[requiredField, maxLengthCreator(20)]} component={Input}/>
                 </div>
                 <div>
                     <Field type={"checkbox"} name={"rememberMe"} component={"input"}/> remember me

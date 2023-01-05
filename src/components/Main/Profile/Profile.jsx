@@ -6,12 +6,14 @@ import ProfileBarsContainer from "./ProfileBars/ProfileBarsContainer";
 import React from "react";
 
 const Profile = React.memo(props => {
-    console.log("render")
+
     return (
 
         <main className={m.profile_main}>
             <ProfileWrapper profile={props.profile} status={props.status}
-                            updateStatus={props.updateStatus}/>
+                            updateStatus={props.updateStatus} isOwner={props.isOwner}
+                            savePhoto={props.savePhoto}
+            />
             <ProfileBarsContainer/>
         </main>
     );
