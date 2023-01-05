@@ -10,8 +10,6 @@ const ProfileWrapper = (props) => {
             props.savePhoto(e.target.files[0])
         }
     }
-
-    if (props.profile){
         return(
             <div className={m.photo_wrapper}>
                 <div className={m.main_photo}>
@@ -53,7 +51,6 @@ const ProfileWrapper = (props) => {
                 </div>
             </div>
         );
-    }
 
 
 }

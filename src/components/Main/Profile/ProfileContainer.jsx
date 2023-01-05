@@ -34,7 +34,6 @@ class ProfileContainer extends React.Component {
 
 
     render() {
-debugger
         return (
             <Profile {...this.props} profile={this.props.profile}
                      status={this.props.status} updateStatus={this.props.updateStatus}
@@ -48,7 +47,7 @@ debugger
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
-    userId: state.auth.userId,
+    userId: state.auth.id,
     isAuth: state.auth.isAuth,
 })
 
