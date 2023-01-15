@@ -8,9 +8,7 @@ let Paginator = (props) => {
     for (let i = 1; i <= pagesCount + 10; i++) {
         pages.push(i);
     }
-    //
-    // let portionSize = 10;
-    // let portionCount = Math.ceil(pagesCount / portionSize)
+
     return (
         <div className={f.div_pages}>
 

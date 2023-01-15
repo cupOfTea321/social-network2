@@ -26,11 +26,29 @@ header input {
     background-color: white;
 }
 .h3{
-    padding-top: 1%;
+    display: flex;
+
+    padding-top: 22px;
     background-color: white;
 }
+.h3 .icons a{
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 26px;
+    border: 2px solid white;
+    padding: 0 10px;
+    padding-top: 5px;
+    margin: 0 5px;
+    border-radius: 40px;
+    background-color: lightgray;
+    color: black;
+}
+.h3 .icons a:hover{
+
+    color: royalblue;
+}
 .h4{
-    padding-top: 1%;
+    padding-top: 22px;
     background-color: white;
 }
 .h4 a{

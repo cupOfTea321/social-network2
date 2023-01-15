@@ -1,8 +1,11 @@
 import m from "../Profile.module.css";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from "../../../../assets/images/user.png";
-import React from "react";
+import React, {useState} from "react";
 
+
+import {RiBookmarkFill, RiBookmarkLine, RiMailLine} from "react-icons/ri";
+import {NavLink} from "react-router-dom";
 const ProfileWrapper = (props) => {
 
     const onMainPhotoSelected = (e) => {
@@ -10,6 +13,7 @@ const ProfileWrapper = (props) => {
             props.savePhoto(e.target.files[0])
         }
     }
+    const [save, setSave] = useState(false)
         return(
             <div className={m.photo_wrapper}>
                 <div className={m.main_photo}>
@@ -31,10 +35,26 @@ const ProfileWrapper = (props) => {
                         <ProfileStatusWithHooks updateStatus={props.updateStatus} status={props.status}/>
 
                     </div>
-                    <div className={m.profile_buttons}>
-                        <button className={m.add_button}>ADD FRIEND</button>
-                        <button className={m.common_button_profile}>i</button>
-                        <button className={m.common_button_profile}>i</button>
+                    <div className={m.profile_buttons} style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <button onClick={() => setSave(true)} style={{marginLeft: 85, cursor: 'pointer'}} className={m.add_button}>ADD FRIEND</button>
+                        <div style={{marginTop: 5}}>
+
+                            <NavLink to='/dialogs' className={m.common_button_profile}>
+                            <span>
+                                <RiMailLine/>
+                            </span>
+
+                            </NavLink>
+                            {!save ? <NavLink  to='/' className={m.common_button_profile}>
+                                    <span><RiBookmarkLine  onClick={() => setSave(true)}/></span>
+                                </NavLink>
+                                : <NavLink  to='/' className={m.common_button_profile}>
+                                    <span><RiBookmarkFill onClick={() => setSave(false)}/></span>
+                                </NavLink>
+                            }
+                        </div>
+
+
                     </div>
 
                 </div>

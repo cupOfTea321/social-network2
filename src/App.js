@@ -23,7 +23,11 @@ class App extends Component {
         this.props.initializeApp();
 
     }
-  render() {
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.props.initializeApp();
+    }
+
+    render() {
 
     // if (!this.props.initialized){
     //     return <Loader/>

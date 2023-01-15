@@ -59,8 +59,20 @@
     border-radius: 5px;
 }
 .common_button_profile {
-    margin-left: 2%;
-    padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 26px;
+    border: 2px solid white;
+    padding: 0 10px;
+    padding-top: 5px;
+    margin: 0 5px;
+
+    border-radius: 40px;
+    background-color: lightgray;
+    color: black;
+}
+.common_button_profile span{
+    margin-top: 20px;
 }
 .nav_profile nav {
     display: flex;
