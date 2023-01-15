@@ -1,4 +1,4 @@
-import f from "./Friends.module.css";
+import f from "../Friends/Friends.module.css";
 import React from "react";
 
 let Paginator = (props) => {
@@ -12,11 +12,19 @@ let Paginator = (props) => {
     // let portionSize = 10;
     // let portionCount = Math.ceil(pagesCount / portionSize)
     return (
-        <div>
+        <div className={f.div_pages}>
 
             {pages.map(p => {
                 return (
                     <span
+                        style={{
+                            border: '3px solid grey',
+                            borderRadius: 10,
+                            fontWeight: 'bold',
+                            cursor: 'pointer',
+                            padding: 5,
+                            margin: 2,
+                        }}
                     key={p}
                     className={props.currentPage === p && f.selectedPage}
                     onClick={(e) => {

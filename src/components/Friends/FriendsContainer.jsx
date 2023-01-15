@@ -28,36 +28,19 @@ import {
 } from "../../Redux/friends_selectors";
 
 class FriendsAPIComponent extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //
-    //
-    //
-    // }
 
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
-        // this.props.toggleIsFetching(true);
-        // UsersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(response => {
-        //
-        //         this.props.toggleIsFetching(false);
-        //         this.props.setUsers(response.items);
-        //     });
+
     }
     setFriendsPage = (pageNumber) => {
         this.props.getUsers(pageNumber, this.props.pageSize);
-        // this.props.toggleIsFetching(true);
         this.props.setPage(pageNumber);
-        // UsersAPI.getUsers(pageNumber, this.props.pageSize).then(response => {
-        //     this.props.toggleIsFetching(false);
-        //     this.props.setUsers(response.items);
-        // });
     }
     render() {
-        // debugger
         return(
             <>
-                {this.props.isFetching ? <Loader/> : null}
+                {/*{this.props.isFetching ? <Loader/> : null}*/}
             <Friends
                 totalFriendsCount={this.props.totalFriendsCount}
                 pageSize={this.props.pageSize}

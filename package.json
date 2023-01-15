@@ -52,5 +52,16 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(react-leaflet|@react-leaflet|d3-*|axios))"
     ]
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cupOfTea321/social-network2.git"
+  },
+  "author": "AlexK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cupOfTea321/social-network2/issues"
   }
 }

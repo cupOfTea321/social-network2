@@ -1,10 +1,16 @@
 .main{
     width: 100%;
-    display: flex;
+
     flex-wrap: wrap;
     align-content: flex-start;
 }
+.main div{
 
+}
+.users_list{
+    margin-top: 30px;
+    display: flex;
+}
 .user_container{
     background-color: white;
     width: 150px;
@@ -21,5 +27,15 @@
     width: 100px;
 }
 .selectedPage{
-    font-weight: bold;
+    /*font-weight: bold;*/
+    /*border: 3px solid grey;*/
+    /*border-radius: 10px;*/
+    /*color: black;*/
+    border-color: cornflowerblue;
+    color: cornflowerblue;
+}
+.div_pages{
+    /*display: flex;*/
+    /*width: 100%;*/
+
 }
