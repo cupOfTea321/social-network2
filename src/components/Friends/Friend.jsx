@@ -16,7 +16,7 @@ let Friend = ({user, followingInProgress, follow, unfollow}) => {
 
                         <p className={f.user_name}>{user.name}</p>
                         <p className={f.user_email}>{user.id}</p>
-                        <div>
+                        <div className={f.follow_btns}>
 
                             {user.followed
 

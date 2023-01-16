@@ -24,8 +24,8 @@ const ProfileWrapper = (props) => {
 
                     }
                     <div  >
-                        {/*<img src={props.profile.photos.small} alt=''/>*/}
-                        <img className={`${m.profile_photo_div} + ${m.round} `} alt="img" src={props.profile !== true ? props.profile.photos.small : userPhoto}/>
+                        {/*<img className={`${m.profile_photo_div} + ${m.round} `}src={props.profile.photos.small} alt=''/>*/}
+                        <img className={`${m.profile_photo_div} + ${m.round} `} alt="img" src={userPhoto}/>
                     </div>
                     {props.isOwner && <div><input onChange={onMainPhotoSelected} type={'file'}/></div>}
                     <div className={m.profile_text}>

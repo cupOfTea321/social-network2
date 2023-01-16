@@ -2,10 +2,10 @@
     display: grid;
     grid-template-columns: 8fr 4fr;
     width: 1200px;
-
+    margin-bottom: 600px;
     grid-area: main;
     /*padding: 10px;*/
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
     /*height: 200%;*/
     /*border: 1px solid white;*/
     /*border-radius: 10px;*/

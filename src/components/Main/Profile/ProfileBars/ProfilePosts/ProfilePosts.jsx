@@ -1,5 +1,7 @@
 import m from "./../../Profile.module.css"
 import {Component} from "react";
+import userPhoto from "../../../../../assets/images/user.png";
+import React from "react";
 
 
 class ProfilePosts extends Component {
@@ -14,8 +16,9 @@ class ProfilePosts extends Component {
 
             <div className={m.profile_block2}>
                 <div className={m.posts_about}>
-                    <div className={`${m.profile_photo_div} + ${m.round} + ${m.post_photo} `}>
-                    </div>
+
+                        <img className={`${m.profile_photo_div} + ${m.round} `} alt="img" src={userPhoto}/>
+
                     <h3 className={m.profile_name}>Alex Kobzev</h3>
 
                 </div>

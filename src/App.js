@@ -12,6 +12,7 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./Redux/app_reducer";
 import Loader from "./components/common/Loader/Loader";
+import Technologies from "./components/Technologies/Technologies";
 
 // import DialogsContainer from "./components/Main/Dialogs/DialogsContainer";
 const DialogsContainer = React.lazy(() => import('./components/Main/Dialogs/DialogsContainer'));
@@ -47,6 +48,7 @@ class App extends Component {
                       <Route path="/dialogs" element={<DialogsContainer/>}/>
                       <Route path="/friends" element={<FriendsContainer/>}/>
                       <Route path="/login" element={<LoginPage/>}/>
+                      <Route path="/techno" element={<Technologies/>}/>
                   </Routes>
               </Suspense>
 

@@ -17,11 +17,11 @@ const Header = (props) => {
                 Technologies:
             </span>
             <span className={classes.icons}>
-                <a href='#'><FaHtml5/></a>
-                <a href='#'><FaBootstrap/></a>
-                <a href='#'><FaCss3Alt/></a>
-                <a href='#'><FaReact/></a>
-                <a href='#'><FaJsSquare/></a>
+                <NavLink to={'/techno'}><FaHtml5/></NavLink>
+                <NavLink to={'/techno'}><FaBootstrap/></NavLink>
+                <NavLink to={'/techno'}><FaCss3Alt/></NavLink>
+                <NavLink to={'/techno'}><FaReact/></NavLink>
+                <NavLink to={'/techno'}><FaJsSquare/></NavLink>
             </span>
 
         </div>
