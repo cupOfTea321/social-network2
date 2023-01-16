@@ -6,9 +6,13 @@ const DiaItem = (props) => {
     let path = '/dialogs/' +  props.id;
     return(
         <div className={`${d.messList} + ${d.active} `}>
-            <NavLink to={ path }>{props.name}</NavLink>
+            <button>
+                <NavLink to={ path }>{props.name}</NavLink>
+            </button>
+
 
         </div>
+
     );
 }
 

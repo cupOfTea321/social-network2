@@ -3,8 +3,9 @@ import d from './Dialogs.module.css'
 import DiaItem from "./DiaItem/DiaItem";
 import MessItem from "./MessItem/MessItem";
 import React from "react";
-import {Navigate} from "react-router-dom";
+import {Navigate, NavLink} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
+import {FaVk} from "react-icons/fa";
 
 
 const Dialogs = (props) => {
@@ -30,7 +31,8 @@ const Dialogs = (props) => {
 
             </div>
             <div className={d.dialogs_block}>
-                <p>диалоги</p>
+                <p style={{marginLeft: 15}}>диалоги</p>
+
                 {dialogsElement}
 
             </div>

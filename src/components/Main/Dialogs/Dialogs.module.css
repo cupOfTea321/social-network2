@@ -54,8 +54,12 @@
 
 }
 .messList a{
-    color: black;
+    color: white;
     text-decoration: none;
+    font-size: 18px;
+}
+.messList a:hover{
+    text-decoration: underline;
 }
 .active{
     border: none;
@@ -67,4 +71,15 @@
 }
 .messList{
 
+}
+.dialogs_block button{
+    background-color: black;
+    color: white;
+    margin-top: -11px;
+    /*padding: -15px;*/
+    /*margin-left: 10px;*/
+    border: 3px solid royalblue;
+    border-radius: 10px;
+    height: 50px;
+    width: 200px;
 }
